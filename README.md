@@ -1,6 +1,6 @@
 # suicide_control
 
-**Unsupported by Chef**
+**Unsupported by Chef Software, Inc.**
 
 The default recipe aborts a chef-client run if the correct entry
 exists in a data bag, or has a specific tag (`suicide`) set. This can
