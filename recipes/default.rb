@@ -13,20 +13,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-def is_daemonized?
-  ENV['DAEMONIZED_CHEF_CLIENT_RUN'] == 'true'
-end
 
 begin
   env = data_bag_item('suicide-ctl', node.chef_environment)
+  suicide = if (env['suicide'] == 'all')
+    "Environment's suicide-ctl data bag is set to `all`"
+  elsif (is_daemonized? and env['suicide'] == 'daemonized')
+    "Environment's suicide-ctl is set to `daemonized`"
+  else
+    false
+  end
 rescue
-  Chef::Log.fatal("Could not find the '#{node.chef_environment}' item in the 'suicide-ctl' data bag")
-  raise
-end
-
-if ((env['suicide'] == 'all') ||
-    (is_daemonized? && env['suicide'] == 'daemonized') ||
-    (tagged?('suicide')))
-  Chef::Log.fatal('Aborting CCR run due to suicide flag setting')
-  raise 'Aborting CCR run due to suicide flag setting'
+  Chef::Log.warn("Could not find the '#{node.chef_environment}' item in the 'suicide-ctl' data bag")
+  raise "Could not load suicide-ctl data bag" if node['suicide_ctl']['fail_on_data_bag']
+ensure
+  if tagged? 'suicide'
+    suicide = "Node is tagged `suicide`"
+  end
+  if suicide
+    Chef::Log.fatal "Aborting CCR run due to suicide-ctl: #{suicide}"
+    raise "Aborting CCR run due to suicide-ctl: #{suicide}"
+  end
 end
