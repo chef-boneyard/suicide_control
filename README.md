@@ -1,6 +1,8 @@
 # suicide_control
+[![Build Status](https://travis-ci.org/chef-cookbooks/suicide_control.svg?branch=master)](http://travis-ci.org/chef-cookbooks/suicide_control)
+[![Cookbook Version](https://img.shields.io/cookbook/v/suicide_control.svg)](https://supermarket.chef.io/cookbooks/suicide_control)
 
-**Unsupported by Chef Software, Inc.**
+
 
 The default recipe aborts a chef-client run if the correct entry
 exists in a data bag, or has a specific tag (`suicide`) set. This can
@@ -36,5 +38,22 @@ When done, remove the tag.
 
 ## Contributing
 
-This cookbook is not externally supported by Chef. We use it
-internally. We consider it code complete.
+
+License & Authors
+-----------------
+
+```text
+Copyright 2009-2015, Chef Software, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
