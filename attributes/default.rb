@@ -2,8 +2,8 @@
 # Cookbook Name:: suicide-control
 # Attributes:: default
 #
-# Author: Paul Mooring <paul@getchef.com>
-# Copyright (c) 2014, Chef Software, Inc <legal@getchef.com>
+# Author: Paul Mooring <paul@chef.io>
+# Copyright (c) 2014, Chef Software, Inc <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
