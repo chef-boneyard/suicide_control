@@ -18,11 +18,11 @@ begin
   env = data_bag_item('suicide-ctl', node.chef_environment)
   suicide = if (env['suicide'] == 'all')
               "Environment's suicide-ctl data bag is set to `all`"
-            elsif is_daemonized? && env['suicide'] == 'daemonized'
+            elsif daemonized? && env['suicide'] == 'daemonized'
               "Environment's suicide-ctl is set to `daemonized`"
             else
               false
-  end
+            end
 rescue
   Chef::Log.warn("Could not find the '#{node.chef_environment}' item in the 'suicide-ctl' data bag")
   raise 'Could not load suicide-ctl data bag' if node['suicide_ctl']['fail_on_data_bag']

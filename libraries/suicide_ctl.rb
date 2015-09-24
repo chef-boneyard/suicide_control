@@ -18,7 +18,7 @@ class Chef
   class Recipe
     # Check `interval` rather than `daemonized` because we actually want to
     # know if it's a long running process as runit doesn't "daemonize"
-    def is_daemonized?
+    def daemonized?
       Chef::Config[:interval]
     end
   end
