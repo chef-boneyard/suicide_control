@@ -16,7 +16,7 @@
 
 begin
   env = data_bag_item('suicide-ctl', node.chef_environment)
-  suicide = if (env['suicide'] == 'all')
+  suicide = if env['suicide'] == 'all'
               "Environment's suicide-ctl data bag is set to `all`"
             elsif daemonized? && env['suicide'] == 'daemonized'
               "Environment's suicide-ctl is set to `daemonized`"
@@ -30,6 +30,6 @@ ensure
   suicide = 'Node is tagged `suicide`' if tagged? 'suicide'
   if suicide
     Chef::Log.fatal "Aborting CCR run due to suicide-ctl: #{suicide}"
-    fail "Aborting CCR run due to suicide-ctl: #{suicide}"
+    raise "Aborting CCR run due to suicide-ctl: #{suicide}"
   end
 end
